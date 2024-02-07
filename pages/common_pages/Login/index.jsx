@@ -1,75 +1,71 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState } from "react";
+import {
+    View,
+    Text,
+    TouchableOpacity,
+    Image,
+    ImageBackground,
+} from "react-native";
 
-const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+import InputWhite from "../../../components/InputWhite";
+import styles from "./styles";
 
-  const handleLogin = () => {
-    // Lógica de autenticação aqui
-    console.log('Email:', email);
-    console.log('Senha:', password);
-    // Você pode enviar os dados para um servidor para autenticação
-  };
+const Login = ({ navigation }) => {
+    const [password, setPassword] = useState("");
+    const [cpf, setCpf] = useState("");
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>chaeso</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Senha"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-      />
-      <TouchableOpacity
-        style={styles.button}
-        onPress={handleLogin}
-      >
-        <Text style={styles.buttonText}>Entrar</Text>
-      </TouchableOpacity>
-    </View>
-  );
+    const handleLogin = () => {
+        // Lógica de autenticação aqui
+        console.log("CPF:", cpf);
+        console.log("Senha:", password);
+        // Você pode enviar os dados para um servidor para autenticação
+    };
+
+    const register = () => {
+        navigation.navigate("RegisterOptions");
+    };
+
+    return (
+        <ImageBackground
+            source={require("../../../assets/images/doddle-veg.png")}
+            style={styles.backgroundImage}
+        >
+            <View style={styles.container}>
+                <Text style={styles.title}>chaeso</Text>
+                <Image
+                    source={require("../../../assets/images/logo-chaeso.png")}
+                    style={styles.imageLogo}
+                />
+                <Text style={styles.label}>
+                    Entre com seu CPF e senha para continuar
+                </Text>
+                <InputWhite
+                    placeholderText="CPF"
+                    secureTextEntry={false}
+                    value={cpf}
+                    onChangeText={(text) => setCpf(text)}
+                />
+
+                <InputWhite
+                    placeholderText="Senha"
+                    secureTextEntry={true}
+                    value={password}
+                    onChangeText={(text) => setPassword(text)}
+                />
+
+                <TouchableOpacity style={styles.button} onPress={handleLogin}>
+                    <Text style={styles.buttonText}>Entrar</Text>
+                </TouchableOpacity>
+
+                <View style={styles.row}>
+                    <Text style={styles.link}>Ainda não possui uma conta?</Text>
+                    <TouchableOpacity onPress={register}>
+                        <Text style={styles.linkBold}> Cadastre-se</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        </ImageBackground>
+    );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  input: {
-    width: '100%',
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 10,
-    paddingLeft: 10,
-  },
-  button: {
-    width: '100%',
-    backgroundColor: 'black',
-    borderRadius: 10,
-    paddingVertical: 15,
-    paddingHorizontal: 20,
-    alignItems: 'center',
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 16,
-  },
-});
 
 export default Login;

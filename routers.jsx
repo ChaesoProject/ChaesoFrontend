@@ -13,8 +13,8 @@ const Routers = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator>
+                <Stack.Screen name="RegisterOptions" component={RegisterOptions} options={{ headerShown: false }}/>
                 <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
-                <Stack.Screen name="RegisterOptions" component={RegisterOptions} />
             </Stack.Navigator>
         </NavigationContainer>
     );
