@@ -14,6 +14,10 @@ const RegisterOptions = ({ navigation }) => {
         navigation.navigate("Login");
     };
 
+    const registerClient = () => {
+        navigation.navigate("Register");
+    }
+
     return (
         <ImageBackground
             source={require("../../../assets/images/doddle-veg.png")}
@@ -30,7 +34,7 @@ const RegisterOptions = ({ navigation }) => {
                 </Text>
 
                 {/* falta colocar o onPress onPress={handleLogin}*/}
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={registerClient}>
                     <Text style={styles.buttonText}>Cliente</Text>
                 </TouchableOpacity>
 

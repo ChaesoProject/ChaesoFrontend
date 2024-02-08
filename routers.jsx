@@ -7,6 +7,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Login from './pages/common_pages/Login'
 import RegisterOptions from './pages/common_pages/RegisterOptions'
 
+import Register from "./pages/app_client/Register";
+
 const Stack = createStackNavigator();
 
 const Routers = () => {
@@ -14,6 +16,7 @@ const Routers = () => {
         <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen name="RegisterOptions" component={RegisterOptions} options={{ headerShown: false }}/>
+                <Stack.Screen name="Register" component={Register} options={{ headerShown: false }}/>
                 <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
             </Stack.Navigator>
         </NavigationContainer>
