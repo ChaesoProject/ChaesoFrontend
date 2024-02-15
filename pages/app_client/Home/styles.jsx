@@ -18,13 +18,21 @@ const styles = StyleSheet.create({
         width: '100%',
         justifyContent: 'space-between'
     },
-    
-    textHeader: {
+    headerTextContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    textHeaderName: {
         color: '#000',
-        fontSize: 12,
+        fontSize: 14,
         fontFamily: 'poppins_medium'
     },
-    
+    textHeaderAdress: {
+        color: '#6F6F6F',
+        fontSize: 10,
+        fontFamily: 'poppins_regular'
+    },
     iconContainer: {
         width: 36,
         height: 36,
@@ -34,6 +42,26 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    iconContainerGreen: {
+        width: 40,
+        height: 40,
+        borderRadius: 10,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#00916C'
+    },
+    mainContainer: {
+        marginTop: 30
+    },
+    searchContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    input: {
+        width: '83.5%'
     }
 });
 

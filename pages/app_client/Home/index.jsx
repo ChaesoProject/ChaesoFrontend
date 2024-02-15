@@ -22,6 +22,8 @@ export default function Home({ navigation }) {
         console.log('menu clicado')
     };
 
+    const [search, setSearch] = useState("");
+
     return (
         <View style={styles.container}>
             <View style={styles.containerChild}>
@@ -32,7 +34,8 @@ export default function Home({ navigation }) {
                         </View>
                     </TouchableOpacity>
                     <View style={styles.headerTextContainer}>
-                        <Text style={styles.textHeader}>header title</Text>
+                        <Text style={styles.textHeaderName}>Olá, Manuela</Text>
+                        <Text style={styles.textHeaderAdress}>R. Ana Lúcia de Lima, 146</Text>
                     </View>
                     <TouchableOpacity>
                         <View style={styles.iconContainer}>
@@ -40,8 +43,21 @@ export default function Home({ navigation }) {
                         </View>
                     </TouchableOpacity>
                 </View>
-                <ScrollView style={styles.form}>
-                    <Text style={styles.textTitle}>Home</Text>
+                <ScrollView style={styles.mainContainer}>
+                    <View style={styles.searchContainer}>
+                        <View style={styles.input}>
+                            <InputGray
+                                placeholderText="Procure por produto"
+                                onChangeText={(e) => setSearch(e)}
+                                value={search}
+                            />
+                        </View>
+                        <TouchableOpacity>
+                            <View style={styles.iconContainerGreen}>
+                                <Feather name="search" size={23} color="#FFF" />
+                            </View>
+                        </TouchableOpacity>
+                    </View>
                 </ScrollView>
             </View>
         </View>
