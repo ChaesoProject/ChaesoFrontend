@@ -22,13 +22,13 @@ const InputGray = ({
         height: 40,
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: isFocused ? "#000000" : "#E7E7E7",
+        borderColor: isFocused ? "#000" : "#F5F5F5",
         paddingLeft: 20,
         color: "#000000",
-        backgroundColor: "#ffffff",
+        backgroundColor: isFocused ? "#FFF": "#F5F5F5",
         fontSize: 14,
-        fontFamily: "poppins_medium",
-        marginBottom: 15,
+        fontFamily: isFocused ? "poppins_medium": "poppins_regular",
+        marginBottom: 9,
         underlineColorAndroid: "transparent",
     };
 
@@ -38,7 +38,7 @@ const InputGray = ({
             onFocus={handleFocus}
             onBlur={handleBlur}
             placeholder={placeholderText}
-            placeholderTextColor="#777"
+            placeholderTextColor="#989898"
             value={value}
             onChangeText={onChangeText}
             secureTextEntry={secureTextEntry}

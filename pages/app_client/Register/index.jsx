@@ -8,8 +8,7 @@ import {
 import { CheckBox } from "react-native-elements";
 import Feather from "react-native-vector-icons/Feather";
 
-import LocalButton from "../../components/LocalButton";
-
+import ButtonGreen from "../../../components/ButtonGreen";
 import InputGray from "../../../components/InputGray";
 
 
@@ -22,10 +21,13 @@ export default function Register({ navigation }) {
     };
 
     const back = () => {
-        //navigation.navigate("CadastroMenu");
-        console.log('back pressionado')
+        navigation.navigate("RegisterOptions");
     };
 
+    const home = () => {
+        navigation.navigate("Home");
+    };
+    
     const [checked, setChecked] = useState(false);
 
     // fields for personal data
@@ -34,18 +36,26 @@ export default function Register({ navigation }) {
     const [dateBirth, setDateBirth] = useState("");
     const [password, setPassword] = useState("");
 
+    // fields for delivery address data
+    const [zipCode, setZipCode] = useState("");
+    const [street, setStreet] = useState("");
+    const [number, setNumber] = useState("");
+    const [district, setDistrict] = useState("");
+    const [city, setCity] = useState("");
+    const [fu, setFu] = useState("");
+
     return (
         <View style={styles.container}>
             <View style={styles.containerChild}>
                 <View style={styles.header}>
-                    <TouchableOpacity onPress={voltar}>
-                        <Feather name="arrow-left" size={25} color="#fff" />
+                    <TouchableOpacity onPress={back}>
+                        <Feather name="arrow-left" size={20} color="#000" />
                     </TouchableOpacity>
-                    <Text style={styles.textRegular}>Cadastro Young</Text>
-                    <Feather name="info" size={25} color="#fff" />
+                    <Text style={styles.textHeader}>Cadastro Chaeso</Text>
+                    <Feather name="info" size={20} color="#FFF" />
                 </View>
                 <ScrollView style={styles.form}>
-                    <Text style={styles.textMedium}>Dados Pessoais</Text>
+                    <Text style={styles.textTitle}>Dados Pessoais</Text>
 
                     <InputGray
                         placeholderText="Nome completo"
@@ -72,20 +82,73 @@ export default function Register({ navigation }) {
                         secureTextEntry={true}
                     />
 
+                    <Text style={styles.textSmall}>
+                        Sua senha deve possuir no mínimo 8 caracteres e incluir números e letras
+                    </Text>
+
+                    <Text style={styles.textTitle}>Endereço para entrega</Text>
+
+                    <InputGray
+                        placeholderText="CEP"
+                        onChangeText={(e) => setZipCode(e)}
+                        value={zipCode}
+                    />
+
+                    <View style={styles.inputContainer}>
+                        <View style={styles.inputBigger}>
+                            <InputGray
+                                placeholderText="Logradouro"
+                                onChangeText={(e) => setStreet(e)}
+                                value={street}
+                            />
+                        </View>
+                        <View style={styles.inputSmaller}>
+                            <InputGray
+                                placeholderText="N°"
+                                onChangeText={(e) => setNumber(e)}
+                                value={number}
+                            />
+                        </View>
+                    </View>
+
+                    <InputGray
+                        placeholderText="Bairro"
+                        onChangeText={(e) => setDistrict(e)}
+                        value={district}
+                    />
+
+                    <View style={styles.inputContainer}>
+                        <View style={styles.inputBigger}>
+                            <InputGray
+                                placeholderText="Cidade"
+                                onChangeText={(e) => setCity(e)}
+                                value={city}
+                            />
+                        </View>
+                        <View style={styles.inputSmaller}>
+                            <InputGray
+                                placeholderText="UF"
+                                onChangeText={(e) => setFu(e)}
+                                value={fu}
+                            />
+                        </View>
+                    </View>
+
                     <CheckBox
-                        title="Declaro que li, estou ciente e concordo com os Termos e Políticas de Privacidade e Segurança Young."
+                        title="Declaro que li e estou de acordo com os termos de privacidade e segurança."
                         checked={checked}
                         onPress={() => setChecked(!checked)}
                         containerStyle={styles.checkBoxContainer}
                         textStyle={styles.checkBoxText}
                         style={styles.containerCheck}
-                        checkedColor="#EEA243"
-                        uncheckedColor="gray"
+                        checkedColor="#000"
+                        uncheckedColor="000"
                     />
 
-                    <LocalButton
-                        text="Confirmar"
-                        onPress={() => alert("Botão clicado!")}
+                    <ButtonGreen
+                        title="Confirmar"
+                        onPress={home}
+                        style={{ marginBottom: 30 }}
                     />
                 </ScrollView>
             </View>

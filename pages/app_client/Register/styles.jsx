@@ -3,12 +3,12 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#121212',
+        backgroundColor: '#FFF',
     },
     containerChild: {
         flex: 1,
-        backgroundColor: '#121212',
-        padding: '7.5%',
+        backgroundColor: '#FFF',
+        padding: 30,
         justifyContent: 'top'
     },
     header: {
@@ -23,27 +23,24 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         gap: 0
     },
-
-    textRegular: {
-        color: '#fff',
-        fontSize: 14,
-        fontFamily: 'regular'
+    textHeader: {
+        color: '#000',
+        fontSize: 12,
+        fontFamily: 'poppins_medium'
+    },
+    textTitle: {
+        color: '#000',
+        fontSize: 16,
+        fontFamily: 'poppins_medium',
+        marginTop: 30,
+        marginBottom: 10
     },
     textSmall: {
-        color: '#fff',
-        fontSize: 12,
-        fontFamily: 'regular',
-        marginTop: 20
+        color: '#000',
+        fontSize: 10,
+        fontFamily: 'poppins_regular',
     },
-    textMedium: {
-        color: '#EEA243',
-        fontSize: 16,
-        fontFamily: 'medium',
-        marginTop: 30,
-        marginBottom: 15,
-    },
-
-
+    
     checkBoxContainer: {
         backgroundColor: 'transparent',
         borderWidth: 0,
@@ -52,11 +49,23 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
     checkBoxText: {
-        color: '#fff',
-        fontSize: 12,
-        fontFamily: 'regular',
-        fontWeight: 400
+        color: '#000',
+        fontSize: 10,
+        fontFamily: 'poppins_regular',
+        fontWeight: 500
     },
+
+    inputContainer: {
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    inputBigger:{
+        width: '72%'
+    },
+    inputSmaller: {
+        width: '25%'
+    }
 });
 
 export default styles;
