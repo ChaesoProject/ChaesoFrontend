@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FEFEFE',
         padding: 30,
         paddingTop: 35,
+        paddingBottom: 0,
         justifyContent: 'top'
     },
     header: {
@@ -104,6 +105,7 @@ const styles = StyleSheet.create({
     },
     cardsContainer: {
         display: 'flex',
+        marginBottom: 50
     },
 
     bannerContainer: {
@@ -116,11 +118,51 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: 20
+        padding: 23
     },
     imageB: {
         width: 130,
         height: 115
+    },
+    bannerTextsContainer: {
+        width: '50%',
+        height: 'auto',
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    textBanner1: {
+        fontSize: 14,
+        fontFamily: 'poppins_semibold'
+    },
+    textBanner2: {
+        fontSize: 10,
+        marginBottom: 5,
+        fontFamily: 'poppins_semibold',
+    },
+    textBanner3: {
+        fontSize: 13,
+        fontFamily: 'poppins_semibold'
+    },
+    textFinal: {
+        fontFamily: 'poppins_medium',
+        color: '#989898',
+        textAlign: 'center',
+        fontSize: 12,
+        marginTop: 10
+    },
+
+    menu: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginBottom: 0,
+        width: '100%',
+        height: 60,
+        paddingHorizontal: 40,
+
+        shadowColor: "#000",
+        elevation: 50
     },
 
     // renderização de cards
@@ -132,7 +174,7 @@ const styles = StyleSheet.create({
         borderColor: '#ECECEC',
         borderRadius: 8,
         padding: 9,
-        flexBasis: `${(100 / 2)-2}%`,
+        flexBasis: `${(100 / 2) - 2}%`,
         alignItems: 'center'
     },
     imageCard: {

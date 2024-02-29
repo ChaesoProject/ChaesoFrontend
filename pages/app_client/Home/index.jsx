@@ -7,24 +7,27 @@ import {
     Image,
     FlatList,
 } from "react-native";
-import { CheckBox } from "react-native-elements";
+
+// import { Shadow } from 'react-native-shadow-2';
+
 import Feather from "react-native-vector-icons/Feather";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import Entypo from "react-native-vector-icons/Entypo";
 import FontAwesome6 from "react-native-vector-icons/FontAwesome6";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 
-import ButtonGreen from "../../../components/ButtonGreen";
 import InputGray from "../../../components/InputGray";
-
-
 import styles from "./styles";
 
 export default function Home({ navigation }) {
     const menu = () => {
         //navigation.navigate("Home");
-
         console.log('menu clicado')
     };
+
+    const shopCart = () => {
+        navigation.navigate("ShopCart");
+    }
 
     const [search, setSearch] = useState("");
 
@@ -101,12 +104,12 @@ export default function Home({ navigation }) {
                             <Text style={styles.categoryName}>Verduras</Text>
                         </TouchableOpacity>
                     </View>
-                    <Image
-                        source={require("../../../assets/images/banner.png")}
-                        style={styles.imageBanner}
-                    />
                     <View style={styles.bannerContainer}>
-                        <Text>textos aqui</Text>
+                        <View style={styles.bannerTextsContainer}>
+                            <Text style={styles.textBanner1}>10% off</Text>
+                            <Text style={styles.textBanner2}>só hoje</Text>
+                            <Text style={styles.textBanner3}>Delivery de <Text style={{ color: '#008764' }}>hortifruti fresco</Text> todos os dias</Text>
+                        </View>
                         <Image
                             source={require("../../../assets/images/vegetable-basket.png")}
                             style={styles.imageB}
@@ -119,8 +122,39 @@ export default function Home({ navigation }) {
                             keyExtractor={item => item.id}
                             numColumns={2}
                         />
+                        <Text style={styles.textFinal}>Fim dos produtos (;-;)</Text>
                     </View>
                 </ScrollView>
+            </View>
+            <View style={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                marginBottom: 0,
+                width: '100%',
+                height: 60,
+                paddingHorizontal: 40,
+
+                // shadowColor: "#000",
+                // elevation: 50
+
+                // borderTopColor: 'black',
+
+            }}>
+                <TouchableOpacity onPress={menu}>
+                    <MaterialIcons name="home-filled" size={26} color="#008764" />
+                </TouchableOpacity>
+                <TouchableOpacity onPress={shopCart}>
+                    <Ionicons name="bag-handle-outline" size={24} color="#979698" />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <FontAwesome name="sticky-note-o" size={22} color="#979698" />
+                    {/* <FontAwesome name="sticky-note" size={24} color="#979698" /> */}
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <Ionicons name="person-outline" size={22} color="#979698" />
+                </TouchableOpacity>
             </View>
         </View>
     );
