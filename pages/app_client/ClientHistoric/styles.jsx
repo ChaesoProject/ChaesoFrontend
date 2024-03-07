@@ -77,10 +77,10 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         justifyContent: 'space-between'
     },
-    imageCard: {
-        width: 85,
-        height: 64,
-        borderRadius: 4
+    imageMap: {
+        width: '100%',
+        height: 270,
+        borderRadius: 7
     },
     columnProduct: {
         display: 'flex',
@@ -129,17 +129,17 @@ const styles = StyleSheet.create({
     resume: {
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-end',
         alignItems: 'center',
-        marginBottom: 50
     },
     buttonContainer: {
         backgroundColor: '#008764',
         borderRadius: 10,
         justifyContent: 'center',
         alignItems: 'center',
-        width: 150,
-        height: 42
+        width: '100%',
+        height: 42,
+        marginTop: 15
     },
     buttonText: {
         color: 'white',
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     },
 
     // teste de modal ---------------
-    
+
     // configurações do modal
     centeredView: {
         flex: 1,
@@ -234,12 +234,52 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
-    inputBigger:{
+    inputBigger: {
         width: '72%'
     },
     inputSmaller: {
         width: '25%'
-    }
+    },
+
+    textStts: {
+        fontFamily: 'poppins_medium',
+        fontSize: 12,
+        color: '#000',
+        marginBottom: 13
+    },
+    cardStatus: {
+        padding: 20,
+        borderWidth: 1,
+        borderColor: '#F0F0F0',
+        borderRadius: 10,
+        marginTop: 10
+    },
+    sectionTtile: {
+        fontFamily: 'poppins_semibold',
+        fontSize: 12,
+        color: '#000'
+    },
+    sectionTtile2: {
+        fontFamily: 'poppins_semibold',
+        fontSize: 12,
+        color: '#000',
+        marginTop: 30
+    },
+
+    cardPedido: {
+        padding: 12,
+        borderWidth: 1,
+        borderColor: '#F0F0F0',
+        borderRadius: 10,
+        marginTop: 10,
+        marginBottom: 5
+    },
+
+    line: {
+        borderBottomWidth: 1,
+        borderBottomColor: '#E4E4E4',
+        marginVertical: 10,
+    },
 });
 
 export default styles;
