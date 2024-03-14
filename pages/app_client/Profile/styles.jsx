@@ -9,7 +9,8 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#FFF',
         padding: 30,
-        justifyContent: 'top'
+        justifyContent: 'top',
+        paddingBottom: 0
     },
     header: {
         display: 'flex',

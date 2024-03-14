@@ -151,29 +151,6 @@ export default function Profile({ navigation }) {
                     </View>
                 </ScrollView>
             </View>
-            <View style={{
-                display: 'flex',
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                marginBottom: 0,
-                width: '100%',
-                height: 60,
-                paddingHorizontal: 40,
-            }}>
-                <TouchableOpacity>
-                    <Feather name="home" size={22} color="#979698" />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Ionicons name="bag-handle-outline" size={24} color="#979698" />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <MaterialCommunityIcons name="sticker-text-outline" size={24} color="#979698" />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Ionicons name="person" size={22} color="#008764" />
-                </TouchableOpacity>
-            </View>
         </View>
     );
 }
