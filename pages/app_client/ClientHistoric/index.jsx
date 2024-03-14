@@ -14,6 +14,7 @@ import {
 import Feather from "react-native-vector-icons/Feather";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+import FontAwesome6 from "react-native-vector-icons/FontAwesome6";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 import InputWhite from "../../../components/InputWhite";
@@ -74,7 +75,6 @@ export default function ClientHistoric({ navigation }) {
                         />
                     </View> */}
 
-
                     <View>
                         <Text style={styles.sectionTtile}>Agora</Text>
                         <View style={styles.cardStatus}>
@@ -95,23 +95,59 @@ export default function ClientHistoric({ navigation }) {
                         <Text style={styles.sectionTtile2}>Histórico</Text>
                         <View style={styles.cardPedido}>
                             <Text style={styles.textDate}>Sex 12 janeiro 2024</Text>
-                            <Text>Pedido concluído - n° 1234</Text>
-                            <Text>
-                                - 2 Kg mamão{'\n'}
-                                - 2 Kg maçã{'\n'}
-                                - 0,5 Kg kiwi{'\n'}
-                                - 0,5 Kg uva vitória
+                            <View style={styles.containerRowPedido}>
+                                <Ionicons name="checkmark-circle-sharp" size={22} color="#00A538" />
+                                <Text style={styles.textPadrao}>Pedido concluído - n° 1234</Text>
+                            </View>
+                            <Text style={styles.textItemPedido}>
+                                • 2 Kg mamão{'\n'}
+                                • 2 Kg maçã{'\n'}
+                                • 0,5 Kg kiwi{'\n'}
+                                • 0,5 Kg uva vitória
                             </Text>
                             <View style={styles.line}></View>
-
                             <View style={styles.resume}>
-                                <Text>Valor do pedido</Text>
-                                <Text>R$ 30,50</Text>
+                                <Text style={styles.textValor}>Valor do pedido</Text>
+                                <Text style={styles.valor}>R$ 30,50</Text>
+                            </View>
+                        </View>
+                        <View style={styles.cardPedido}>
+                            <Text style={styles.textDate}>Sex 12 janeiro 2024</Text>
+                            <View style={styles.containerRowPedido}>
+                                <Ionicons name="checkmark-circle-sharp" size={22} color="#00A538" />
+                                <Text style={styles.textPadrao}>Pedido concluído - n° 1233</Text>
+                            </View>
+                            <Text style={styles.textItemPedido}>
+                                • 2 Kg mamão{'\n'}
+                                • 2 Kg maçã{'\n'}
+                                • 0,5 Kg kiwi{'\n'}
+                                • 0,5 Kg uva vitória
+                            </Text>
+                            <View style={styles.line}></View>
+                            <View style={styles.resume}>
+                                <Text style={styles.textValor}>Valor do pedido</Text>
+                                <Text style={styles.valor}>R$ 30,50</Text>
+                            </View>
+                        </View>
+                        <View style={styles.cardPedido}>
+                            <Text style={styles.textDate}>Sex 12 janeiro 2024</Text>
+                            <View style={styles.containerRowPedido}>
+                                <Ionicons name="close-circle-sharp" size={22} color="#FF3939" />
+                                <Text style={styles.textPadrao}>Pedido cancelado - n° 1232</Text>
+                            </View>
+                            <Text style={styles.textItemPedido}>
+                                • 10 Kg banana
+                            </Text>
+                            <View style={styles.line}></View>
+                            <View style={styles.resume}>
+                                <Text style={styles.textValor}>Valor do pedido</Text>
+                                <Text style={styles.valor}>R$ 36,00</Text>
                             </View>
                         </View>
                     </View>
-
-
+                    
+                    {/* view temporaria */}
+                    <View style={{marginBottom: 60}}></View>
 
                 </ScrollView>
             </View>

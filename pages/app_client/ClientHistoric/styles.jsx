@@ -147,99 +147,7 @@ const styles = StyleSheet.create({
         fontFamily: 'poppins_medium'
     },
 
-    // teste de modal ---------------
-
-    // configurações do modal
-    centeredView: {
-        flex: 1,
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.3)',
-        marginTop: 0
-    },
-    modalView: {
-        margin: 0,
-        backgroundColor: '#FFF',
-        borderRadius: 30,
-        borderBottomLeftRadius: 0,
-        borderBottomRightRadius: 0,
-        width: '100%',
-        height: 'auto',
-        paddingTop: 50,
-        paddingBottom: 55,
-        paddingLeft: 30,
-        paddingRight: 30,
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: 25,
-        boxShadow: '20ox 4px 8px 50px rgba(0, 0, 0, 0.2)'
-    },
-    btnContainer: {
-        width: '83%'
-    },
-    buttonContainerModal: {
-        backgroundColor: '#008764',
-        borderRadius: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-        height: 42,
-        marginBottom: -15
-    },
-    buttonContainerModalEdit: {
-        backgroundColor: '#fff',
-        borderRadius: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-        height: 42
-    },
-    buttonText2: {
-        color: '#008764',
-        fontSize: 14,
-        fontFamily: 'poppins_medium'
-    },
-    textModal: {
-        fontFamily: 'poppins_regular',
-        fontSize: 14,
-        color: '#000',
-        textAlign: 'center'
-    },
-    bold: {
-        fontFamily: 'poppins_semibold',
-    },
-    btnClose: {
-        position: 'absolute',
-        bottom: 430,
-        right: 20
-    },
-    btnClose1: {
-        position: 'absolute',
-        bottom: 230,
-        right: 20
-    },
-
-    textTitleModal: {
-        fontFamily: 'poppins_medium',
-        fontSize: 16,
-        textAlign: 'left'
-    },
-    form: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 0
-    },
-    inputContainer: {
-        width: '100%',
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-    },
-    inputBigger: {
-        width: '72%'
-    },
-    inputSmaller: {
-        width: '25%'
-    },
+    // stts
 
     textStts: {
         fontFamily: 'poppins_medium',
@@ -280,6 +188,44 @@ const styles = StyleSheet.create({
         borderBottomColor: '#E4E4E4',
         marginVertical: 10,
     },
+
+    textDate: {
+        fontFamily: 'poppins_regular',
+        color: '#6F6F6F',
+        fontSize: 10
+    },
+    textPadrao: {
+        fontFamily: 'poppins_medium',
+        color: '#000',
+        fontSize: 13,
+    },
+    textItemPedido: {
+        fontFamily: 'poppins_regular',
+        color: '#3D3D3D',
+        fontSize: 13,
+        paddingLeft: 7,
+        lineHeight: 22,
+        marginTop: 8
+    },
+    containerRowPedido: {
+        display: 'flex',
+        flexDirection: 'row',
+        gap: 7,
+        alignItems: 'center',
+        marginTop: 3
+    },
+    textValor: {
+        fontFamily: 'poppins_regular',
+        fontSize: 10,
+        color: '#686868',
+        marginRight: 10
+    },
+    valor: {
+        fontFamily: 'poppins_medium',
+        fontSize: 14,
+        color: '#000',
+        marginRight: 10
+    }
 });
 
 export default styles;
