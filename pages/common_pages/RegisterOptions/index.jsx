@@ -18,6 +18,10 @@ const RegisterOptions = ({ navigation }) => {
         navigation.navigate("Register");
     }
 
+    const registerTransporter = () => {
+        navigation.navigate("TransporterRegister");
+    }
+
     return (
         <ImageBackground
             source={require("../../../assets/images/doddle-veg.png")}
@@ -38,7 +42,7 @@ const RegisterOptions = ({ navigation }) => {
                     <Text style={styles.buttonText}>Cliente</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={registerTransporter}>
                     <Text style={styles.buttonText}>Entregador</Text>
                 </TouchableOpacity>
 

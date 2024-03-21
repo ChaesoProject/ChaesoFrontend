@@ -151,29 +151,6 @@ export default function ClientHistoric({ navigation }) {
 
                 </ScrollView>
             </View>
-            <View style={{
-                display: 'flex',
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                marginBottom: 0,
-                width: '100%',
-                height: 60,
-                paddingHorizontal: 40,
-            }}>
-                <TouchableOpacity onPress={menu}>
-                    <Feather name="home" size={22} color="#979698" />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Ionicons name="bag-handle-outline" size={24} color="#979698" />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <FontAwesome name="sticky-note" size={24} color="#008764" />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Ionicons name="person-outline" size={22} color="#979698" />
-                </TouchableOpacity>
-            </View>
         </View>
     );
 }

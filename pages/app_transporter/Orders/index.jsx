@@ -19,7 +19,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import InputGray from "../../../components/InputGray";
 import styles from "./styles";
 
-export default function Home({ navigation }) {
+export default function Orders({ navigation }) {
     const [modalVisible, setModalVisible] = useState(false);
     
     const openMenu = () => {
@@ -40,8 +40,6 @@ export default function Home({ navigation }) {
     const DATA = [
         { productName: 'Mamão', unit: '1 Kg', productPrice: '5,00', imageUrl: require('../../../assets/images/fruits/mamão.png') },
         { productName: 'Maçã', unit: '1 Kg', productPrice: '3,00', imageUrl: require('../../../assets/images/fruits/maça.png') },
-        { productName: 'Uva Vitória', unit: '1 Kg', productPrice: '15,00', imageUrl: require('../../../assets/images/fruits/uva.png') },
-        { productName: 'Kiwi', unit: '1 Kg', productPrice: '20,00', imageUrl: require('../../../assets/images/fruits/kiwi.png') },
     ];
 
     const renderItem = ({ item }) => (
@@ -70,8 +68,8 @@ export default function Home({ navigation }) {
                         </View>
                     </TouchableOpacity>
                     <View style={styles.headerTextContainer}>
-                        <Text style={styles.textHeaderName}>Olá, Manuela</Text>
-                        <Text style={styles.textHeaderAdress}>R. Ana Lúcia de Lima, 146</Text>
+                        <Text style={styles.textHeaderName}>Olá, Gabriel</Text>
+                        <Text style={styles.textHeaderAdress}>Entregador ativo</Text>
                     </View>
                     <TouchableOpacity>
                         <View style={styles.iconContainer}>
@@ -83,7 +81,7 @@ export default function Home({ navigation }) {
                     <View style={styles.searchContainer}>
                         <View style={styles.input}>
                             <InputGray
-                                placeholderText="Procure por produto"
+                                placeholderText="Procure por pedido"
                                 onChangeText={(e) => setSearch(e)}
                                 value={search}
                             />
@@ -94,32 +92,7 @@ export default function Home({ navigation }) {
                             </View>
                         </TouchableOpacity>
                     </View>
-                    <Text style={styles.categoryTitle}>Categorias</Text>
-                    <View style={styles.rowCategories}>
-                        <TouchableOpacity style={styles.category}>
-                            <FontAwesome6 name="apple-whole" size={32} color="#EB3223" />
-                            <Text style={styles.categoryName}>Frutas</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.category}>
-                            <FontAwesome6 name="carrot" size={32} color="#F29D38" />
-                            <Text style={styles.categoryName}>Legumes</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.category}>
-                            <FontAwesome6 name="leaf" size={32} color="#78A55A" />
-                            <Text style={styles.categoryName}>Verduras</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.bannerContainer}>
-                        <View style={styles.bannerTextsContainer}>
-                            <Text style={styles.textBanner1}>10% off</Text>
-                            <Text style={styles.textBanner2}>só hoje</Text>
-                            <Text style={styles.textBanner3}>Delivery de <Text style={{ color: '#008764' }}>hortifruti fresco</Text> todos os dias</Text>
-                        </View>
-                        <Image
-                            source={require("../../../assets/images/vegetable-basket.png")}
-                            style={styles.imageB}
-                        />
-                    </View>
+                    
                     <View style={styles.cardsContainer}>
                         <FlatList
                             data={DATA}
@@ -145,8 +118,8 @@ export default function Home({ navigation }) {
                         <View style={styles.modalProfile}>
                             <Ionicons name="person-circle-outline" size={48} color="#000" />
                             <View>
-                                <Text style={styles.modalUserName}>Manuela</Text>
-                                <Text style={styles.modalUserEmail}>manu.souza@gmail.com</Text>
+                                <Text style={styles.modalUserName}>Gabriel</Text>
+                                <Text style={styles.modalUserEmail}>gabriel.gai@gmail.com</Text>
                             </View>
                         </View>
                         <View style={styles.modalTexts}>

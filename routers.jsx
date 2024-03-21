@@ -1,114 +1,156 @@
-import "react-native-gesture-handler";
 import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-// import of application common pages to create the route
-import Login from './pages/common_pages/Login'
-import RegisterOptions from './pages/common_pages/RegisterOptions'
-
+// Importe as páginas com createStackNavigator
 import Register from "./pages/app_client/Register";
+import TransporterRegister from "./pages/app_transporter/TransporterRegister";
+import Login from "./pages/common_pages/Login";
+import RegisterOptions from "./pages/common_pages/RegisterOptions";
+
+// páginas do lado cliente
 import Home from "./pages/app_client/Home";
 import ShopCart from "./pages/app_client/ShopCart";
 import ClientHistoric from "./pages/app_client/ClientHistoric";
 import Profile from "./pages/app_client/Profile";
 
-import Feather from "react-native-vector-icons/Feather";
-import Ionicons from "react-native-vector-icons/Ionicons";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+// páginas do lado entregador
+import Orders from "./pages/app_transporter/Orders";
 
-const Tab = createBottomTabNavigator();
+import Feather from "react-native-vector-icons/Feather";
+
+const Stack = createStackNavigator();
+const Tab1 = createBottomTabNavigator();
+const Tab2 = createBottomTabNavigator();
+
 const Routers = () => {
     return (
-        <Tab.Navigator
+        <Stack.Navigator initialRouteName="Login">
+            <Stack.Screen
+                name="Login"
+                component={Login}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="RegisterOptions"
+                component={RegisterOptions}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="Register"
+                component={Register}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="TransporterRegister"
+                component={TransporterRegister}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="AppTab1Navigator"
+                component={AppTab1Navigator}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="AppTab2Navigator"
+                component={AppTab2Navigator}
+                options={{ headerShown: false }}
+            />
+        </Stack.Navigator>
+    );
+};
+
+const AppTab1Navigator = () => {
+    return (
+        <Tab1.Navigator
             screenOptions={{
-                // outras opções de tabBarOptions aqui
                 tabBarStyle: {
                     backgroundColor: '#fff',
                     borderTopColor: 'transparent',
-                    height: 60,
+                    height: 65,
+                    flexDirection: 'row',
+                    bottom: -10
                 },
                 activeTintColor: '#008764',
                 inactiveTintColor: '#979698',
-                tabStyle: {
-                    paddingTop: 18
-                }
             }}
         >
-
-            <Tab.Screen
+            <Tab1.Screen
                 name="Home"
                 component={Home}
                 options={{
                     headerShown: false,
                     tabBarLabel: '',
-                    tabBarIcon: ({ color }) => (
-                        <Feather name="home" size={22} />
+                    tabBarIcon: ({ color, focused }) => (
+                        <Feather name="home" size={22} color={focused ? '#008764' : '#979698'} />
                     )
                 }}
             />
-
-            <Tab.Screen
+            <Tab1.Screen
                 name="ShopCart"
                 component={ShopCart}
                 options={{
                     headerShown: false,
                     tabBarLabel: '',
-                    tabBarIcon: ({ color }) => (
-                        <Ionicons name="bag-handle-outline" size={24} />
+                    tabBarIcon: ({ color, focused }) => (
+                        <Feather name="shopping-bag" size={22} color={focused ? '#008764' : '#979698'} />
                     )
                 }}
             />
-
-            <Tab.Screen
+            <Tab1.Screen
                 name="ClientHistoric"
                 component={ClientHistoric}
                 options={{
                     headerShown: false,
                     tabBarLabel: '',
-                    tabBarIcon: ({ color }) => (
-                        <MaterialCommunityIcons name="sticker-text-outline" size={24} />
+                    tabBarIcon: ({ color, focused }) => (
+                        <Feather name="list" size={22} color={focused ? '#008764' : '#979698'} />
                     )
                 }}
             />
-
-            <Tab.Screen
+            <Tab1.Screen
                 name="Profile"
                 component={Profile}
                 options={{
                     headerShown: false,
                     tabBarLabel: '',
-                    tabBarIcon: ({ color }) => (
-                        <Ionicons name="person" size={22} />
+                    tabBarIcon: ({ color, focused }) => (
+                        <Feather name="user" size={22} color={focused ? '#008764' : '#979698'} />
                     )
                 }}
             />
-        </Tab.Navigator>
+        </Tab1.Navigator>
     );
 };
 
+const AppTab2Navigator = () => {
+    return (
+        <Tab2.Navigator
+            screenOptions={{
+                tabBarStyle: {
+                    backgroundColor: '#fff',
+                    borderTopColor: 'transparent',
+                    height: 65,
+                    flexDirection: 'row',
+                    bottom: -10
+                },
+                activeTintColor: '#008764',
+                inactiveTintColor: '#979698',
+            }}
+        >
+            <Tab2.Screen
+                name="Orders"
+                component={Orders}
+                options={{
+                    headerShown: false,
+                    tabBarLabel: '',
+                    tabBarIcon: ({ color, focused }) => (
+                        <Feather name="home" size={22} color={focused ? '#008764' : '#979698'} />
+                    )
+                }}
+            />
+        </Tab2.Navigator>
+    )
+};
+
 export default Routers;
-
-{/*
-
-outras abas
-
-<Tab.Screen name="Login" component={Login} options={{ headerShown: false }} />
-<Tab.Screen name="Register" component={Register} options={{ headerShown: false }} />
-<Tab.Screen name="RegisterOptions" component={RegisterOptions} options={{ headerShown: false }} />
-
-*/}
-
-
-{/* <TouchableOpacity>
-                    <Feather name="home" size={22} color="#979698" />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Ionicons name="bag-handle-outline" size={24} color="#979698" />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <MaterialCommunityIcons name="sticker-text-outline" size={24} color="#979698" />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Ionicons name="person" size={22} color="#008764" />
-                </TouchableOpacity> */}
