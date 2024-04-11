@@ -7,9 +7,8 @@ import {
     Image,
     Modal,
     FlatList,
+    Alert,
 } from "react-native";
-
-// import { Shadow } from 'react-native-shadow-2';
 
 import Feather from "react-native-vector-icons/Feather";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -21,48 +20,120 @@ import styles from "./styles";
 
 export default function Orders({ navigation }) {
     const [modalVisible, setModalVisible] = useState(false);
+    const [confirmModalVisible, setConfirmModalVisible] = useState(false);
+    const [selectedOrder, setSelectedOrder] = useState(null);
+    const [search, setSearch] = useState("");
     
+    const [pedidos, setPedidos] = useState([
+        { orderNumber: '1234', clientName: 'Manuela Rocha', orderPrice: '30,50', status: 'Pedido pronto para entrega' },
+        { orderNumber: '1235', clientName: 'Jennifer Costa', orderPrice: '30,50', status: 'Pedido pronto para entrega' },
+        { orderNumber: '1236', clientName: 'João Victor', orderPrice: '30,50', status: 'Pedido pronto para entrega' },
+        { orderNumber: '1237', clientName: 'Eduarda Souza', orderPrice: '30,50', status: 'Pedido a caminho' },
+        { orderNumber: '1238', clientName: 'Kethelyn Machado', orderPrice: '30,50', status: 'Pedido a caminho' },
+    ]);
+
     const openMenu = () => {
         setModalVisible(!modalVisible);
     };
 
     const closeModal = () => {
         setModalVisible(false);
-    }
+    };
+
+    const openConfirmModal = (orderNumber) => {
+        setSelectedOrder(orderNumber);
+        setConfirmModalVisible(true);
+    };
+
+    const closeConfirmModal = () => {
+        setConfirmModalVisible(false);
+        setSelectedOrder(null);
+    };
 
     const shopCart = () => {
         navigation.navigate("ShopCart");
-    }
+    };
 
-    const [search, setSearch] = useState("");
+    const handlePressButton = (orderNumber, newStatus) => {
+        if (newStatus === 'Concluído') {
+            openConfirmModal(orderNumber);
+        } else {
+            updateOrderStatus(orderNumber, newStatus);
+        }
+    };
 
-    // renderização de cards
-    const DATA = [
-        { productName: 'Mamão', unit: '1 Kg', productPrice: '5,00', imageUrl: require('../../../assets/images/fruits/mamão.png') },
-        { productName: 'Maçã', unit: '1 Kg', productPrice: '3,00', imageUrl: require('../../../assets/images/fruits/maça.png') },
-    ];
+    const updateOrderStatus = (orderNumber, newStatus) => {
+        setPedidos(prevPedidos => {
+            if (newStatus === 'Concluído') {
+                return prevPedidos.filter(pedido => pedido.orderNumber !== orderNumber);
+            } else {
+                return prevPedidos.map(pedido => {
+                    if (pedido.orderNumber === orderNumber) {
+                        return { ...pedido, status: newStatus };
+                    }
+                    return pedido;
+                });
+            }
+        });
+    };
 
-    const renderItem = ({ item }) => (
-        <View style={styles.item}>
-            <Image source={item.imageUrl} style={styles.imageCard} />
-            <View style={styles.rowProduct}>
-                <Text style={styles.productName}>{item.productName}</Text>
-                <Text style={styles.unit}>{item.unit}</Text>
+    const confirmOrderCompletion = () => {
+        updateOrderStatus(selectedOrder, 'Concluído');
+        closeConfirmModal();
+    };
+
+    const renderItem = ({ item }) => {
+        // Define o estilo e o texto do botão com base no valor do status
+        let buttonLabel;
+        let newStatus;
+        let buttonAction;
+
+        if (item.status === 'Pedido pronto para entrega') {
+            buttonLabel = 'Entregar';
+            newStatus = 'Pedido a caminho';
+            buttonAction = () => handlePressButton(item.orderNumber, newStatus);
+        } else {
+            buttonLabel = 'Concluir';
+            newStatus = 'Concluído';
+            buttonAction = () => handlePressButton(item.orderNumber, newStatus);
+        }
+
+        // Define o estilo com base no valor do status
+        const statusStyle = item.status === 'Pedido pronto para entrega' ? styles.status1 : styles.status2;
+        const btnStatusStyle = item.status === 'Pedido pronto para entrega' ? styles.btnStatus1 : styles.btnStatus2;
+
+        return (
+            <View style={styles.item}>
+                <View style={styles.containerRowCard}>
+                    <View>
+                        <Text style={styles.smallGray}>Pedido n° {item.orderNumber}</Text>
+                        <Text style={styles.clientName}>{item.clientName}</Text>
+                    </View>
+                    <View style={styles.right}>
+                        <Text style={styles.smallGray}>Valor do produto</Text>
+                        <Text style={styles.orderPrice}>R$ {item.orderPrice}</Text>
+                    </View>
+                </View>
+                <View style={styles.containerRowCard}>
+                    <View>
+                        <Text style={styles.smallGray2}>Status atual do pedido</Text>
+                        <Text style={[styles.status, statusStyle]}>
+                            {item.status}
+                        </Text>
+                    </View>
+                    <TouchableOpacity onPress={buttonAction} style={[styles.buttonStatus, btnStatusStyle]}>
+                        <Text style={styles.buttonText}>{buttonLabel}</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-            <Text style={styles.productPrice}>R$ {item.productPrice}</Text>
-
-            <TouchableOpacity style={styles.buttonAdd}>
-                <FontAwesome6 name="cart-shopping" size={18} color="#008764" />
-                <Text style={styles.textAdd}>Adicionar</Text>
-            </TouchableOpacity>
-        </View>
-    );
+        );
+    };
 
     return (
         <View style={styles.container}>
             <View style={styles.containerChild}>
                 <View style={styles.header}>
-                    <TouchableOpacity onPress={() => setModalVisible(true)}>
+                    <TouchableOpacity onPress={openMenu}>
                         <View style={styles.iconContainer}>
                             <Feather name="menu" size={24} color="#000" />
                         </View>
@@ -71,7 +142,7 @@ export default function Orders({ navigation }) {
                         <Text style={styles.textHeaderName}>Olá, Gabriel</Text>
                         <Text style={styles.textHeaderAdress}>Entregador ativo</Text>
                     </View>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={shopCart}>
                         <View style={styles.iconContainer}>
                             <Ionicons name="notifications" size={24} color="#000" />
                         </View>
@@ -92,15 +163,15 @@ export default function Orders({ navigation }) {
                             </View>
                         </TouchableOpacity>
                     </View>
-                    
+
                     <View style={styles.cardsContainer}>
                         <FlatList
-                            data={DATA}
+                            data={pedidos}
                             renderItem={renderItem}
-                            keyExtractor={item => item.id}
-                            numColumns={2}
+                            keyExtractor={(item, index) => index.toString()}
+                            numColumns={1}
                         />
-                        <Text style={styles.textFinal}>Fim dos produtos (;-;)</Text>
+                        <Text style={styles.textFinal}>Fim dos pedidos :)</Text>
                     </View>
                 </ScrollView>
             </View>
@@ -109,10 +180,8 @@ export default function Orders({ navigation }) {
                 animationType="fade"
                 transparent={true}
                 visible={modalVisible}
-                onRequestClose={() => {
-                    setModalVisible(!modalVisible);
-                }}>
-
+                onRequestClose={closeModal}
+            >
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
                         <View style={styles.modalProfile}>
@@ -137,6 +206,27 @@ export default function Orders({ navigation }) {
                     <TouchableOpacity style={styles.btnCloseModal} onPress={closeModal}>
                         <MaterialCommunityIcons name="close" size={18} color="#979698" />
                     </TouchableOpacity>
+                </View>
+            </Modal>
+
+            <Modal
+                animationType="fade"
+                transparent={true}
+                visible={confirmModalVisible}
+                onRequestClose={closeConfirmModal}
+            >
+                <View style={styles.centeredView}>
+                    <View style={styles.modalConfirmView}>
+                        <Text style={styles.confirmModalText}>Concluir entrega do pedido?</Text>
+                        <View style={styles.confirmModalButtons}>
+                            <TouchableOpacity style={styles.confirmModalButton} onPress={confirmOrderCompletion}>
+                                <Text style={styles.confirmButtonText}>Confirmar</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.cancelModalButton} onPress={closeConfirmModal}>
+                                <Text style={styles.cancelButtonText}>Cancelar</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
                 </View>
             </Modal>
         </View>

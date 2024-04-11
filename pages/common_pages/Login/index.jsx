@@ -20,7 +20,7 @@ const Login = ({ navigation }) => {
         console.log("Senha:", password);
         // Você pode enviar os dados para um servidor para autenticação
 
-        // navigation.navigate('AppTabNavigator', { screen: 'Home' });
+        // navigation.navigate('AppTab1Navigator', { screen: 'Home' });
         navigation.navigate('AppTab2Navigator', { screen: 'Orders' });
     };
 
