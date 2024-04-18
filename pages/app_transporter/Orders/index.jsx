@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
     Text,
     View,
@@ -11,8 +11,8 @@ import {
 } from "react-native";
 
 import Feather from "react-native-vector-icons/Feather";
-import Ionicons from "react-native-vector-icons/Ionicons";
 import FontAwesome6 from "react-native-vector-icons/FontAwesome6";
+import Ionicons from "react-native-vector-icons/Ionicons";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 import InputGray from "../../../components/InputGray";
@@ -21,8 +21,20 @@ import styles from "./styles";
 export default function Orders({ navigation }) {
     const [modalVisible, setModalVisible] = useState(false);
     const [confirmModalVisible, setConfirmModalVisible] = useState(false);
+    const [successModalVisible, setSuccessModalVisible] = useState(false);
     const [selectedOrder, setSelectedOrder] = useState(null);
     const [search, setSearch] = useState("");
+
+    // função para fazer o modal de sucesso aparecer na tela e fechar sozinho após 3 segundos
+    useEffect(() => {
+        if (successModalVisible) {
+            const timer = setTimeout(() => {
+                setSuccessModalVisible(false);
+            }, 3000);
+
+            return () => clearTimeout(timer);
+        }
+    }, [successModalVisible]);
     
     const [pedidos, setPedidos] = useState([
         { orderNumber: '1234', clientName: 'Manuela Rocha', orderPrice: '30,50', status: 'Pedido pronto para entrega' },
@@ -48,6 +60,10 @@ export default function Orders({ navigation }) {
     const closeConfirmModal = () => {
         setConfirmModalVisible(false);
         setSelectedOrder(null);
+    };
+
+    const closeSuccessModal = () => {
+        setSuccessModalVisible(false);
     };
 
     const shopCart = () => {
@@ -80,6 +96,7 @@ export default function Orders({ navigation }) {
     const confirmOrderCompletion = () => {
         updateOrderStatus(selectedOrder, 'Concluído');
         closeConfirmModal();
+        setSuccessModalVisible(true);
     };
 
     const renderItem = ({ item }) => {
@@ -226,6 +243,20 @@ export default function Orders({ navigation }) {
                                 <Text style={styles.cancelButtonText}>Cancelar</Text>
                             </TouchableOpacity>
                         </View>
+                    </View>
+                </View>
+            </Modal>
+
+            <Modal
+                animationType="fade"
+                transparent={true}
+                visible={successModalVisible}
+                onRequestClose={closeSuccessModal}
+            >
+                <View style={styles.centeredView}>
+                    <View style={styles.modalConfirmView}>
+                    <FontAwesome6 name="circle-check" size={50} color="#00A538" />
+                        <Text style={styles.succesModalText}>Entrega do pedido concluída com sucesso :)</Text>
                     </View>
                 </View>
             </Modal>

@@ -68,7 +68,8 @@ const styles = StyleSheet.create({
     },
     cardsContainer: {
         display: 'flex',
-        marginBottom: 50
+        marginBottom: 50,
+        marginTop: 15,
     },
     textFinal: {
         fontFamily: 'poppins_medium',
@@ -94,7 +95,6 @@ const styles = StyleSheet.create({
 
     // renderização de cards
     item: {
-        marginRight: 10,
         marginBottom: 15,
         backgroundColor: '#FFFFFF',
         borderWidth: 1,
@@ -294,7 +294,13 @@ const styles = StyleSheet.create({
         fontSize: 13,
         fontFamily: 'poppins_medium',
     },
-
+    succesModalText: {
+        fontFamily: 'poppins_medium',
+        fontSize: 13,
+        color: '#000',
+        textAlign: 'center',
+        marginTop: 10,
+    },
 });
 
 export default styles;

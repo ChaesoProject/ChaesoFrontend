@@ -16,8 +16,12 @@ import Profile from "./pages/app_client/Profile";
 
 // páginas do lado entregador
 import Orders from "./pages/app_transporter/Orders";
+import TransporterHistoric from "./pages/app_transporter/TransporterHistoric";
+import TransporterProfile from "./pages/app_transporter/TransporterProfile";
+import Dashboard from "./pages/app_transporter/Dashboard";
 
 import Feather from "react-native-vector-icons/Feather";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 const Stack = createStackNavigator();
 const Tab1 = createBottomTabNavigator();
@@ -145,7 +149,40 @@ const AppTab2Navigator = () => {
                     headerShown: false,
                     tabBarLabel: '',
                     tabBarIcon: ({ color, focused }) => (
-                        <Feather name="home" size={22} color={focused ? '#008764' : '#979698'} />
+                        <Feather name="truck" size={22} color={focused ? '#008764' : '#979698'} />
+                    )
+                }}
+            />
+            <Tab2.Screen
+                name="Dashboard"
+                component={Dashboard}
+                options={{
+                    headerShown: false,
+                    tabBarLabel: '',
+                    tabBarIcon: ({ color, focused }) => (
+                        <MaterialCommunityIcons name="view-dashboard-outline" size={22} color={focused ? '#008764' : '#979698'} />
+                    )
+                }}
+            />
+            <Tab2.Screen
+                name="TransporterHistoric"
+                component={TransporterHistoric}
+                options={{
+                    headerShown: false,
+                    tabBarLabel: '',
+                    tabBarIcon: ({ color, focused }) => (
+                        <Feather name="list" size={22} color={focused ? '#008764' : '#979698'} />
+                    )
+                }}
+            />
+            <Tab2.Screen
+                name="TransporterProfile"
+                component={TransporterProfile}
+                options={{
+                    headerShown: false,
+                    tabBarLabel: '',
+                    tabBarIcon: ({ color, focused }) => (
+                        <Feather name="user" size={22} color={focused ? '#008764' : '#979698'} />
                     )
                 }}
             />
