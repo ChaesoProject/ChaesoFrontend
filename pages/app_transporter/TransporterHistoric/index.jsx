@@ -64,8 +64,8 @@ export default function TransporterHistoric({ navigation }) {
         <View style={styles.container}>
             <View style={styles.containerChild}>
                 <ScrollView style={styles.mainContainer}>
-                    <Text style={styles.categoryTitle}>Meus pedidos</Text>
-                    <Text style={styles.textHeaderAdress}>Resumo de todos os pedidos realizados por você</Text>
+                    <Text style={styles.categoryTitle}>Resumo de redidos entregues</Text>
+                    <Text style={styles.textHeaderAdress}>Gabriel Santana</Text>
                     {/* <View style={styles.cardsContainer}>
                         <FlatList
                             data={DATA}
@@ -76,21 +76,11 @@ export default function TransporterHistoric({ navigation }) {
                     </View> */}
 
                     <View>
-                        <Text style={styles.sectionTtile}>Agora</Text>
-                        <View style={styles.cardStatus}>
-                            <Text style={styles.textStts}>Seu pedido está sendo preparado</Text>
-                            <Text style={styles.textStts}>Seu pedido saiu para entrega e está a caminho do seu endereço</Text>
-                            <Text style={styles.textStts}>Pedido entregue</Text>
-
-                            <Image
-                                style={styles.imageMap}
-                                source={require('../../../assets/images/map_image.png')}
-                            />
-
-                            <TouchableOpacity style={styles.buttonContainer}>
-                                <Text style={styles.buttonText}>Confirmar entrega</Text>
-                            </TouchableOpacity>
-                        </View>
+                        <Text style={styles.sectionTtile}>Sua localização</Text>
+                        <Image
+                            style={styles.imageRoute}
+                            source={require('../../../assets/images/route_image.png')}
+                        />
 
                         <Text style={styles.sectionTtile2}>Histórico</Text>
                         <View style={styles.cardPedido}>
@@ -99,12 +89,6 @@ export default function TransporterHistoric({ navigation }) {
                                 <Ionicons name="checkmark-circle-sharp" size={22} color="#00A538" />
                                 <Text style={styles.textPadrao}>Pedido concluído - n° 1234</Text>
                             </View>
-                            <Text style={styles.textItemPedido}>
-                                • 2 Kg mamão{'\n'}
-                                • 2 Kg maçã{'\n'}
-                                • 0,5 Kg kiwi{'\n'}
-                                • 0,5 Kg uva vitória
-                            </Text>
                             <View style={styles.line}></View>
                             <View style={styles.resume}>
                                 <Text style={styles.textValor}>Valor do pedido</Text>
@@ -117,12 +101,6 @@ export default function TransporterHistoric({ navigation }) {
                                 <Ionicons name="checkmark-circle-sharp" size={22} color="#00A538" />
                                 <Text style={styles.textPadrao}>Pedido concluído - n° 1233</Text>
                             </View>
-                            <Text style={styles.textItemPedido}>
-                                • 2 Kg mamão{'\n'}
-                                • 2 Kg maçã{'\n'}
-                                • 0,5 Kg kiwi{'\n'}
-                                • 0,5 Kg uva vitória
-                            </Text>
                             <View style={styles.line}></View>
                             <View style={styles.resume}>
                                 <Text style={styles.textValor}>Valor do pedido</Text>
@@ -132,12 +110,9 @@ export default function TransporterHistoric({ navigation }) {
                         <View style={styles.cardPedido}>
                             <Text style={styles.textDate}>Sex 12 janeiro 2024</Text>
                             <View style={styles.containerRowPedido}>
-                                <Ionicons name="close-circle-sharp" size={22} color="#FF3939" />
-                                <Text style={styles.textPadrao}>Pedido cancelado - n° 1232</Text>
+                                <Ionicons name="checkmark-circle-sharp" size={22} color="#00A538" />
+                                <Text style={styles.textPadrao}>Pedido concluído - n° 1232</Text>
                             </View>
-                            <Text style={styles.textItemPedido}>
-                                • 10 Kg banana
-                            </Text>
                             <View style={styles.line}></View>
                             <View style={styles.resume}>
                                 <Text style={styles.textValor}>Valor do pedido</Text>
@@ -145,9 +120,9 @@ export default function TransporterHistoric({ navigation }) {
                             </View>
                         </View>
                     </View>
-                    
+
                     {/* view temporaria */}
-                    <View style={{marginBottom: 60}}></View>
+                    <View style={{ marginBottom: 60 }}></View>
 
                 </ScrollView>
             </View>

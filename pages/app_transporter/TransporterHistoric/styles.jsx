@@ -77,10 +77,11 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         justifyContent: 'space-between'
     },
-    imageMap: {
+    imageRoute: {
         width: '100%',
-        height: 270,
-        borderRadius: 7
+        height: 400,
+        borderRadius: 7,
+        marginTop: 5
     },
     columnProduct: {
         display: 'flex',
