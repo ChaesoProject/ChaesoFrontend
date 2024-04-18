@@ -10,6 +10,10 @@ import styles from "./styles";
 
 export default function Dashboard({ navigation }) {
 
+    const data = [150, 200, 145, 240]; // dados dos valores das barras
+    const maxBarHeight = 150; // altura máxima das barras
+    const colors = ["#FF5F5F", "#FD9739", "#C8E261", "#19BA90"];
+
     return (
         <View style={styles.container}>
             <View style={styles.containerChild}>
@@ -18,10 +22,41 @@ export default function Dashboard({ navigation }) {
                     <Text style={styles.subtitle}>Gabriel Santana</Text>
 
                     <View style={styles.containerValues}>
-                        <Image
-                            style={styles.imageGrafic}
-                            source={require('../../../assets/images/graphic_image.png')}
-                        />
+                        <Text style={{
+                            marginBottom: -50,
+                            fontFamily: 'poppins_regular',
+                            color: '#808080', fontSize: 10,
+                            textAlign: 'center'
+                        }}>
+                            Entregas nos últimos 4 meses</Text>
+                        
+                        <View style={{
+                            flexDirection: "row",
+                            alignItems: "flex-end",
+                            justifyContent: 'center',
+                            borderWidth: 1,
+                            borderColor: "#ECECEC",
+                            borderRadius: 8,
+                            padding: 20,
+                            paddingTop: 50,
+                            gap: 15
+                        }}>
+                            {data.map((value, index) => (
+                                <View
+                                    key={index}
+                                    style={{
+                                        backgroundColor: colors[index % colors.length],
+                                        width: 30,
+                                        borderRadius: 7,
+                                        alignItems: "center",
+                                        justifyContent: "flex-end",
+                                        height: (value / Math.max(...data)) * maxBarHeight,
+                                    }}
+                                >
+                                    <Text style={{ color: "#fff", fontFamily: 'poppins_medium', fontSize: 12, marginBottom: 3 }}>{value}</Text>
+                                </View>
+                            ))}
+                        </View>
 
                         <View style={styles.containerLastMonths}>
                             <Text style={styles.smallText1}>Total de entregas nos últimos 4 meses</Text>

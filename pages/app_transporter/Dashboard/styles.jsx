@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#FEFEFE',
     },
-    
+
     containerChild: {
         flex: 1,
         backgroundColor: '#FEFEFE',
@@ -14,11 +14,11 @@ const styles = StyleSheet.create({
         paddingBottom: 0,
         justifyContent: 'top'
     },
-    
+
     mainContainer: {
         paddingTop: 25
     },
-    
+
     title: {
         color: '#000',
         fontSize: 16,
@@ -80,10 +80,11 @@ const styles = StyleSheet.create({
         paddingVertical: 12,
         borderRadius: 8,
         backgroundColor: '#FEEFE1',
-        gap: 15
+        gap: 15,
+        marginBottom: 50
     },
 
-    containerValues:{
+    containerValues: {
         gap: 15
     },
 
@@ -94,14 +95,14 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         width: 94
     },
-    
+
     smallText2: {
         fontSize: 9,
         color: '#000',
         fontFamily: 'poppins_medium',
         textAlign: 'center'
     },
-    
+
     smallText3: {
         fontSize: 9,
         color: '#E77E1E',
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         width: 103
     },
-    
+
     bigText1: {
         fontSize: 30,
         color: '#000',
@@ -118,7 +119,7 @@ const styles = StyleSheet.create({
         margin: 0,
         marginBottom: -5
     },
-    
+
     bigText2: {
         fontSize: 30,
         color: '#008764',
@@ -137,6 +138,7 @@ const styles = StyleSheet.create({
         margin: 0,
         marginBottom: -5
     },
+
 });
 
 export default styles;

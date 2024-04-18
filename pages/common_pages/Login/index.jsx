@@ -5,6 +5,7 @@ import {
     TouchableOpacity,
     Image,
     ImageBackground,
+    Alert,
 } from "react-native";
 
 import InputWhite from "../../../components/InputWhite";
@@ -15,13 +16,24 @@ const Login = ({ navigation }) => {
     const [cpf, setCpf] = useState("");
 
     const handleLogin = () => {
-        // Lógica de autenticação aqui
+        // teste dos campos
         console.log("CPF:", cpf);
         console.log("Senha:", password);
-        // Você pode enviar os dados para um servidor para autenticação
 
-        // navigation.navigate('AppTab1Navigator', { screen: 'Home' });
-        navigation.navigate('AppTab2Navigator', { screen: 'Orders' });
+        // validação do login
+        if (cpf === '55544433322' && password === 'client123') {
+            navigation.navigate('AppTab1Navigator', { screen: 'Home' });
+        } else if (cpf === '11122233344' && password === 'transporter123') {
+            navigation.navigate('AppTab2Navigator', { screen: 'Orders' });
+        } else {
+            Alert.alert(
+                'Credenciais Inválidas',
+                'Usuário e senha não foram encontrados no sistema, certifique-se de que você possui cadastro.',
+                [{ text: 'OK', onPress: () => console.log('Botão OK pressionado') }],
+                { cancelable: false }
+              );
+        }
+
     };
 
     const register = () => {
